@@ -1,12 +1,13 @@
 {
+  "name": "ecommerce-fullstack",
+  "version": "1.0.0",
+  "description": "Fullstack eCommerce application ready for Render deployment",
+  "main": "backend/server.js",
   "scripts": {
-    "dev": "cd ecommerce-websites && npm run dev",
-    "build": "cd ecommerce-websites && npm run build",
-    "preview": "cd ecommerce-websites && npm run preview",
-    "lint": "cd ecommerce-websites && npm run lint"
+    "start": "npm --prefix backend start",
+    "build": "npm --prefix backend install && npm --prefix ecommerce-websites install && npm --prefix ecommerce-websites run build"
   },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.0",
-    "tailwindcss": "^4.3.0"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
