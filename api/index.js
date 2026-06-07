@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDB from './config/db.js';
 import productRoutes from './routes/productRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import { importData } from './seeder.js';
 
 dotenv.config();
 
@@ -26,6 +27,15 @@ app.use(async (req, res, next) => {
 
 app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
+
+app.get('/api/seed', async (req, res) => {
+  try {
+    await importData();
+    res.json({ message: 'Database seeded successfully with admin user and products!' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
