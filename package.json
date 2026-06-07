@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "cd ecommerce-websites && npm run dev",
+    "build": "cd ecommerce-websites && npm run build",
+    "preview": "cd ecommerce-websites && npm run preview",
+    "lint": "cd ecommerce-websites && npm run lint"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  }
+}
