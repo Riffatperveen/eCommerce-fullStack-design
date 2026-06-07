@@ -3,13 +3,8 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    const uri = process.env.MONGO_URI;
-    if (!uri) {
-      throw new Error("MONGO_URI environment variable is completely missing in Vercel! You need to add it in your Vercel Project Settings -> Environment Variables.");
-    }
-    if (uri.includes('localhost')) {
-      throw new Error("MONGO_URI is set to localhost, which Vercel cannot reach! Please set it to your MongoDB Atlas connection string.");
-    }
+    const fallbackUri = 'mongodb+srv://riffatperveen:perveen0951@cluster0.hxajutz.mongodb.net/ecommerce?retryWrites=true&w=majority';
+    const uri = process.env.MONGO_URI || fallbackUri;
     
     const conn = await mongoose.connect(uri);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
