@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import CartItem from '../components/CartItem';
 
-function CartPage({ cartItems, onUpdateQuantity, onRemove }) {
+function CartPage({ cartItems, onUpdateQuantity, onRemove, onClearCart }) {
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const tax = subtotal * 0.1; // 10% tax
   const shipping = subtotal > 50 ? 0 : 10; // Free shipping over $50
@@ -129,7 +129,13 @@ function CartPage({ cartItems, onUpdateQuantity, onRemove }) {
               </div>
 
               {/* Checkout Button */}
-              <button className="w-full bg-blue-600 text-white font-bold py-2 md:py-3 px-6 rounded-lg hover:bg-blue-700 transition text-sm md:text-base lg:text-lg">
+              <button 
+                onClick={() => {
+                  alert("Order Placed Successfully! Thank you for your purchase.");
+                  onClearCart();
+                }}
+                className="w-full bg-blue-600 text-white font-bold py-2 md:py-3 px-6 rounded-lg hover:bg-blue-700 transition text-sm md:text-base lg:text-lg"
+              >
                 Proceed to Checkout
               </button>
 

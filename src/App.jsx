@@ -61,6 +61,11 @@ function App() {
     setCartItems((prevItems) => prevItems.filter((item) => item._id !== productId));
   };
 
+  // Clear entire cart
+  const handleClearCart = () => {
+    setCartItems([]);
+  };
+
   // Calculate cart count
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -86,6 +91,7 @@ function App() {
                   cartItems={cartItems}
                   onUpdateQuantity={handleUpdateQuantity}
                   onRemove={handleRemoveFromCart}
+                  onClearCart={handleClearCart}
                 />
               }
             />
