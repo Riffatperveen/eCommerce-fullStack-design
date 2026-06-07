@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
 
 let mongoServer;
 
@@ -8,6 +7,7 @@ const connectDB = async () => {
     let uri = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce';
 
     if (process.env.USE_MEMORY_DB === 'true') {
+      const { MongoMemoryServer } = await import('mongodb-memory-server');
       mongoServer = await MongoMemoryServer.create();
       uri = mongoServer.getUri();
       console.log('Using In-Memory MongoDB for testing');
